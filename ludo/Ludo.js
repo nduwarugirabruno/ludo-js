@@ -200,16 +200,19 @@ export class Ludo {
 
     checkForKill(player, piece) {
         const currentPosition = this.currentPositions[player][piece];
-        const opponent = player === 'P1' ? 'P2' : 'P1';
 
         let kill = false;
 
-        [0, 1, 2, 3].forEach(piece => {
-            const opponentPosition = this.currentPositions[opponent][piece];
+        PLAYERS.forEach((opponent) => {
+            if (opponent !== player) {
+                [0, 1, 2, 3].forEach((opponentPiece) => {
+                    const opponentPosition = this.currentPositions[opponent][opponentPiece];
 
-            if(currentPosition === opponentPosition && !SAFE_POSITIONS.includes(currentPosition)) {
-                this.setPiecePosition(opponent, piece, BASE_POSITIONS[opponent][piece]);
-                kill = true
+                    if (currentPosition === opponentPosition && !SAFE_POSITIONS.includes(currentPosition)) {
+                        this.setPiecePosition(opponent, opponentPiece, BASE_POSITIONS[opponent][opponentPiece]);
+                        kill = true;
+                    }
+                });
             }
         });
 
