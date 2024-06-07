@@ -37,7 +37,7 @@ export class Ludo {
 
         if(value === STATE.DICE_NOT_ROLLED) {
             UI.enableDice();
-            UI.unhighlightPieces();
+            UI.unHighlightPieces();
         } else {
             UI.disableDice();
         }
@@ -85,8 +85,12 @@ export class Ludo {
         }
     }
 
+    // Here is the incremental turn function
     incrementTurn() {
-        this.turn = this.turn === 0 ? 1 : 0;
+        if(this.turn === 3) {
+            this.turn = 0;
+        } else this.turn = this.turn + 1;
+        // this.turn = this.turn === 0 ? 1 : 0;
         this.state = STATE.DICE_NOT_ROLLED;
     }
 
@@ -105,14 +109,10 @@ export class Ludo {
                 return false;
             }
 
-            if(
-                HOME_ENTRANCE[player].includes(currentPosition)
-                && this.diceValue > HOME_POSITIONS[player] - currentPosition
-                ) {
-                return false;
-            }
+            return !(HOME_ENTRANCE[player].includes(currentPosition)
+                && this.diceValue > HOME_POSITIONS[player] - currentPosition);
 
-            return true;
+
         });
     }
 
@@ -161,7 +161,7 @@ export class Ludo {
             return;
         }
 
-        UI.unhighlightPieces();
+        UI.unHighlightPieces();
         this.movePiece(player, piece, this.diceValue);
     }
 

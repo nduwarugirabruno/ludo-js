@@ -62,14 +62,12 @@
     background-color: #00b550;
 }
 
-/*
 [player-id="P3"].player-piece {
     background-color: #ffde15;
 }
 [player-id="P4"].player-piece {
     background-color: #e9161f;
 }
-*/
 
 .player-base {
     width: 40%;

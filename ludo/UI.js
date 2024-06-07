@@ -79,7 +79,7 @@ export class UI {
         })
     }
 
-    static unhighlightPieces() {
+    static unHighlightPieces() {
         document.querySelectorAll('.player-piece.highlight').forEach(ele => {
             ele.classList.remove('highlight');
         })
@@ -89,13 +89,3 @@ export class UI {
         document.querySelector('.dice-value').innerText = value;
     }
 }
-
-// UI.setPiecePosition('P1', 0, 0);
-// UI.setTurn(0);
-// UI.setTurn(1);
-
-// UI.disableDice();
-// UI.enableDice();
-// UI.highlightPieces('P1', [0]);
-// UI.unhighlightPieces();
-// UI.setDiceValue(5);
