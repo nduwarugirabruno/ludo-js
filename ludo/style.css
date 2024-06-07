@@ -39,6 +39,7 @@
 .player-piece.highlight {
     cursor: pointer;
     border: 2px dashed;
+    z-index: 10;
     animation: spin 1s infinite linear;
 }
 
